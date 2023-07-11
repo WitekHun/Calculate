@@ -9,17 +9,32 @@ while True:
             operand = float(input("Wprowadź liczbę:  "))
             if result == None:
                 result = operand
-                print(
-                    f"Wartość RESULT przy wprowadzaniu liczby: {result}, wartość operandu {operand}"
-                )  # only for debuging
-                wait_for_number = False
-                continue
-            else:
-                print(
-                    f"Wartość2 RESULT przy wprowadzaniu liczby: {result}, wartość2 operandu {operand}"
-                )  # only for debugin
-                wait_for_number = False
-                continue
+            if operator:
+                if operator == "+":
+                    result += operand
+                elif operator == "-":
+                    result -= operand
+                elif operator == "*":
+                    result *= operand
+                elif operator == "/":
+                    result /= operand
+            wait_for_number = False
+            continue
+        except ValueError:
+            print("Błędna wartość! ")
+            continue
+    else:
+        operator = input("'+', '-', '*', '/' lub '=' to finish ")
+        if operator == "=":
+            print(result)
+        elif operator in ("+", "-", "*", "/"):
+            wait_for_number = True
+            continue
+        else:
+            print("błędna wartość operatora!")
+            continue
+    break
+    '''
         except ValueError:
             print("Błędna wartość! ")
             continue
@@ -49,9 +64,11 @@ while True:
             result /= operand
             wait_for_number = True
             continue
+   
         elif operator == "=":
             print(result)
         else:
             print("błędna wartość operatora!")
             continue
         break
+    '''
